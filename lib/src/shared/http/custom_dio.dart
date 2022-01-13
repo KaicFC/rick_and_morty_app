@@ -13,9 +13,9 @@ class CustomDio {
     dio.interceptors.add(interpceptorOnError());
   }
 
-  static const String endpointCharacters = 'character';
-  static const String endpointLocations = 'location';
-  static const String endpointEpisodes = 'episode';
+  static const String endpointCharacters = 'character/';
+  static const String endpointLocations = 'location/';
+  static const String endpointEpisodes = 'episode/';
 }
 
 InterceptorsWrapper interpceptorRequest() {

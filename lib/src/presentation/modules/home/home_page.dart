@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:rick_and_morty_app/src/presentation/modules/details/details_page.dart';
 import 'package:rick_and_morty_app/src/presentation/modules/home/home_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -76,6 +77,13 @@ class _HomePageState extends State<HomePage> {
     var controller = _homeController.headerModel!.results!;
 
     return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    DetailsPage(characterId: controller[index]['id'])));
+      },
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 15),
         child: Container(
@@ -129,7 +137,7 @@ class _HomePageState extends State<HomePage> {
                           style: TextStyle(
                               decoration: TextDecoration.none,
                               fontSize: 15,
-                              color: Colors.white),
+                              color: Colors.greenAccent),
                         ),
                         Text(
                           '${controller[index]['episode'].length}',
@@ -152,7 +160,6 @@ class _HomePageState extends State<HomePage> {
 
   _textCard(int index, String name, String key) {
     var controller = _homeController.headerModel!.results!;
-
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -161,7 +168,7 @@ class _HomePageState extends State<HomePage> {
           style: TextStyle(
               decoration: TextDecoration.none,
               fontSize: 15,
-              color: Colors.white),
+              color: Colors.greenAccent),
         ),
         Text(
           '${controller[index][key]}',
