@@ -7,7 +7,7 @@
 
 ### Demonstração
 
-<img src="/screenshots/rick_and_morty.gif" heigth="400" width="300">
+<img src="/screenshots/rick_morty.gif" heigth="400" width="300">
 <img src="/screenshots/home.png" heigth="400" width="300">
 <img src="/screenshots/details.png" heigth="400" width="300">
 <img src="/screenshots/loading.png" heigth="400" width="300">
@@ -97,7 +97,7 @@ Divirta-se!
 * [Dart](https://dart.dev) - Linguagem de Programação.
 * [Flutter](https://flutter.dev) - Framework de Desenvolvimento.
 * [MobX](https://pub.dev/packages/mobx) - Gerenciador de Estado.
-* [Rcik&Morty_API](https://rickandmortyapi.com/documentation) - Rick & Morty API.
+* [Rick_Morty_API](https://rickandmortyapi.com/documentation) - Rick & Morty API.
 
 
 ## ✒️ Autor

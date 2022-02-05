@@ -51,37 +51,44 @@ class _DetailsPageState extends State<DetailsPage> {
   }
 
   _appBar() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        GestureDetector(
-          onTap: () => Navigator.pop(context),
-          child: Icon(
-            Icons.arrow_back,
-            color: Colors.white,
-            size: 30,
-          ),
-        ),
-        Expanded(
-          child: Text(
-            '${_detailsController.charactersModel!.name}',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              decoration: TextDecoration.none,
-              fontSize: 30,
-              color: Colors.white,
+    return TweenAnimationBuilder<double?>(
+        tween: Tween(begin: 1, end: 0),
+        duration: const Duration(seconds: 2),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            GestureDetector(
+              onTap: () => Navigator.pop(context),
+              child: Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+                size: 30,
+              ),
             ),
-          ),
+            Expanded(
+              child: Text(
+                '${_detailsController.charactersModel!.name}',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  decoration: TextDecoration.none,
+                  fontSize: 30,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            Visibility(visible: false, child: Container())
+          ],
         ),
-        Visibility(visible: false, child: Container())
-      ],
-    );
+        builder: (context, value, child) {
+          return Transform.translate(
+              offset: Offset(0.0, -100 * value!), child: child!);
+        });
   }
 
   _image() {
     return TweenAnimationBuilder<double?>(
         tween: Tween(begin: 0, end: 1),
-        duration: const Duration(seconds: 1),
+        duration: const Duration(seconds: 2),
         child: Container(
           width: double.infinity,
           height: 400,
@@ -101,70 +108,65 @@ class _DetailsPageState extends State<DetailsPage> {
 
   _description() {
     var controller = _detailsController.charactersModel!;
-    return  TweenAnimationBuilder<double?>(
-      duration: const Duration(seconds: 1),
-      tween: Tween(begin: 1, end: 0),
-      child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(height: 10),
-          Text(
-            'Sobre'.toUpperCase(),
-            style: TextStyle(
-              decoration: TextDecoration.none,
-              fontSize: 23,
-              color: Colors.lightGreenAccent,
-            ),
-          ),
-          SizedBox(height: 10),
-          Row(
+    return TweenAnimationBuilder<double?>(
+        duration: const Duration(seconds: 2),
+        tween: Tween(begin: 1, end: 0),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              _textCard('Status: ', true),
-              _textCard('${controller.status}', false),
+              SizedBox(height: 10),
+              Text(
+                'Sobre'.toUpperCase(),
+                style: TextStyle(
+                  decoration: TextDecoration.none,
+                  fontSize: 23,
+                  color: Colors.lightGreenAccent,
+                ),
+              ),
+              SizedBox(height: 10),
+              Row(
+                children: [
+                  _textCard('Status: ', true),
+                  _textCard('${controller.status}', false),
+                ],
+              ),
+              SizedBox(height: 10),
+              Row(
+                children: [
+                  _textCard('Espécie: ', true),
+                  _textCard('${controller.species}', false),
+                ],
+              ),
+              SizedBox(height: 10),
+              Row(
+                children: [
+                  _textCard('Genero: ', true),
+                  _textCard('${controller.gender}', false),
+                ],
+              ),
+              SizedBox(height: 10),
+              Wrap(
+                children: [
+                  _textCard('Origem: ', true),
+                  _textCard('${controller.origin!.name}', false)
+                ],
+              ),
+              SizedBox(height: 10),
+              Wrap(
+                children: [
+                  _textCard('Localizacao: ', true),
+                  _textCard('${controller.location!.name}', false),
+                ],
+              ),
             ],
           ),
-          SizedBox(height: 10),
-          Row(
-            children: [
-              _textCard('Espécie: ', true),
-              _textCard('${controller.species}', false),
-            ],
-          ),
-          SizedBox(height: 10),
-          Row(
-            children: [
-              _textCard('Genero: ', true),
-              _textCard('${controller.gender}', false),
-            ],
-          ),
-          SizedBox(height: 10),
-          Wrap(
-            children: [
-              _textCard('Origem: ', true),
-              _textCard('${controller.origin!.name}', false)
-            ],
-          ),
-          SizedBox(height: 10),
-          Wrap(
-            children: [
-              _textCard('Localizacao: ', true),
-              _textCard('${controller.location!.name}', false),
-            ],
-          ),
-        ],
-      ),
-    ),
-      builder: (context, value, child) {
-        return Transform.translate(
-          offset: Offset(0, 100 * value!),
-          child: child!);
-      }
-    );
-    
-    
-    ;
+        ),
+        builder: (context, value, child) {
+          return Transform.translate(
+              offset: Offset(0, 100 * value!), child: child!);
+        });
   }
 
   _episodes() {
