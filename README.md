@@ -97,7 +97,7 @@ Divirta-se!
 * [Dart](https://dart.dev) - Linguagem de Programação.
 * [Flutter](https://flutter.dev) - Framework de Desenvolvimento.
 * [MobX](https://pub.dev/packages/mobx) - Gerenciador de Estado.
-* [SWAPI](https://rickandmortyapi.com/documentation) - The Star Wars Api.
+* [Rcik&Morty_API](https://rickandmortyapi.com/documentation) - Rick & Morty API.
 
 
 ## ✒️ Autor
