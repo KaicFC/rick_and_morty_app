@@ -34,62 +34,41 @@ Caso não possua o Flutter instalado ou queira atualizar para a versão estável
 
 ### 🔧 Executando o Projeto
 
-Abra o terminal e clone este repositório:
-
 ```
-git clone https://github.com/KaicFC/rick_and_morty_app.git
-```
+Abra o terminal e clone o repositório:
+$ git clone https://github.com/KaicFC/rick_and_morty_app.git
 
 Entre na pasta com o comando:
-
-```
-cd rick_and_morty_app
-```
+$ cd rick_and_morty_app
 
 Adicione e atualize todas as dependências:
-
-```
-flutter pub get
-```
+$ flutter pub get
 
 Execute o projeto:
-
-```
-flutter run
-```
+$ flutter run
 
 Divirta-se!
-
+```
 
 ### 🔧 Se Houver Algum Erro
 
-Dentro da pasta desafio03:
+```
+Dentro da pasta:
+$ cd rick_and_morty_app
 
-```
-cd rick_and_morty_app
-```
 
 Execute o comando:
-
-```
-flutter clean
-```
+$ flutter clean
 
 Adicione e atualize todas as dependências:
-
-```
-flutter pub get
-
-flutter pub run build_runner build --delete-conflicting-outputs
-```
+$ flutter pub get
+$ flutter pub run build_runner build --delete-conflicting-outputs
 
 Execute o projeto:
-
-```
-flutter run
-```
+$ flutter run
 
 Divirta-se!
+```
 
 
 ## 🛠️ Construído com
