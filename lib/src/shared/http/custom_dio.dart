@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 
 class CustomDio {
   late Dio dio;
+  Dio get instance => dio;
 
   CustomDio.getInstance() {
     this.dio = Dio();

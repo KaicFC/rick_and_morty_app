@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:rick_and_morty_app/src/presentation/modules/details/details_controller.dart';
 import 'package:rick_and_morty_app/src/presentation/widgets/loading.dart';
+import 'package:rick_and_morty_app/src/shared/di/di.dart';
 
 class DetailsPage extends StatefulWidget {
   final int? characterId;
@@ -15,7 +16,7 @@ class DetailsPage extends StatefulWidget {
 }
 
 class _DetailsPageState extends State<DetailsPage> {
-  final DetailsController _detailsController = DetailsController();
+  final _detailsController = inject.get<DetailsController>();
 
   @override
   void initState() {

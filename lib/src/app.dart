@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:rick_and_morty_app/src/presentation/modules/home/home_page.dart';
 
 class MyApp extends StatelessWidget {

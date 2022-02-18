@@ -5,6 +5,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:rick_and_morty_app/src/presentation/modules/details/details_page.dart';
 import 'package:rick_and_morty_app/src/presentation/modules/home/home_controller.dart';
 import 'package:rick_and_morty_app/src/presentation/widgets/loading.dart';
+import 'package:rick_and_morty_app/src/shared/di/di.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final HomeController _homeController = HomeController();
+  final _homeController = inject.get<HomeController>();
 
   @override
   void initState() {
