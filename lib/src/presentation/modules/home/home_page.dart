@@ -41,10 +41,8 @@ class _HomePageState extends State<HomePage> {
       padding: EdgeInsets.symmetric(horizontal: 15),
       child: Column(
         children: [
-          SizedBox(height: 20),
           _appBar(),
-          SizedBox(height: 20),
-          _listChar()
+          _listChar(),
         ],
       ),
     );
@@ -54,12 +52,15 @@ class _HomePageState extends State<HomePage> {
     return TweenAnimationBuilder<double?>(
         tween: Tween(begin: 1, end: 0),
         duration: const Duration(seconds: 2),
-        child: Text(
-          'Characters',
-          style: TextStyle(
-            decoration: TextDecoration.none,
-            color: Colors.white,
-            fontSize: 40,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 20),
+          child: Text(
+            'Characters',
+            style: TextStyle(
+              decoration: TextDecoration.none,
+              color: Colors.white,
+              fontSize: 40,
+            ),
           ),
         ),
         builder: (context, value, child) {
@@ -71,128 +72,137 @@ class _HomePageState extends State<HomePage> {
   _listChar() {
     var controller = _homeController.headerModel!.results!;
     return Expanded(
+      flex: 1,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 20),
         child: ListView.builder(
-      itemCount: controller.length,
-      itemBuilder: (context, index) {
-        return _cardList(index);
-      },
-    ));
+          itemCount: controller.length,
+          itemBuilder: (context, index) {
+            return _cardList(index);
+          },
+        ),
+      ),
+    );
   }
 
   _cardList(int index) {
     var controller = _homeController.headerModel!.results!;
     return TweenAnimationBuilder<double?>(
-        duration: const Duration(seconds: 2),
-        tween: Tween(begin: 1, end: 0),
-        curve: Curves.linear,
-        child: GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => DetailsPage(
-                  characterId: controller[index]['id'],
-                ),
+      duration: const Duration(seconds: 2),
+      tween: Tween(begin: 1, end: 0),
+      curve: Curves.linear,
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DetailsPage(
+                characterId: controller[index]['id'],
               ),
-            );
-          },
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 15),
-            child: Container(
-              height: 200,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Colors.brown,
-              ),
-              child: Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                    child: TweenAnimationBuilder<double?>(
-                        duration: const Duration(seconds: 2),
-                        curve: Curves.easeIn,
-                        tween: Tween(begin: 1, end: 0),
-                        child: Container(
-                          width: 150,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: Colors.grey,
-                            image: DecorationImage(
-                                image: NetworkImage(
-                                    '${controller[index]['image']}'),
-                                fit: BoxFit.cover),
+            ),
+          );
+        },
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 15),
+          child: Container(
+            height: 200,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: Colors.brown,
+            ),
+            child: Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  child: TweenAnimationBuilder<double?>(
+                      duration: const Duration(seconds: 2),
+                      curve: Curves.easeIn,
+                      tween: Tween(begin: 1, end: 0),
+                      child: Container(
+                        width: 150,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Colors.grey,
+                          image: DecorationImage(
+                            image:
+                                NetworkImage('${controller[index]['image']}'),
+                            fit: BoxFit.cover,
                           ),
                         ),
-                        builder: (context, value, child) {
-                          return Opacity(
-                            opacity: 1 - value!,
-                            child: child!,
-                          );
-                        }),
-                  ),
-                  Expanded(
-                      child: Padding(
+                      ),
+                      builder: (context, value, child) {
+                        return Opacity(
+                          opacity: 1 - value!,
+                          child: child!,
+                        );
+                      }),
+                ),
+                Expanded(
+                  child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                     child: TweenAnimationBuilder<double?>(
-                        duration: const Duration(seconds: 3),
-                        curve: Curves.bounceInOut,
-                        tween: Tween(begin: 1, end: 0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              '${controller[index]['name']}',
-                              style: TextStyle(
-                                  decoration: TextDecoration.none,
-                                  fontSize: 22,
-                                  color: Colors.white),
-                            ),
-                            SizedBox(height: 15),
-                            _textCard(index, 'status', 'status'),
-                            SizedBox(height: 5),
-                            _textCard(index, 'espécies', 'species'),
-                            SizedBox(height: 5),
-                            _textCard(index, 'genero', 'gender'),
-                            SizedBox(height: 5),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'EPISÓDIOS',
-                                  style: TextStyle(
-                                      decoration: TextDecoration.none,
-                                      fontSize: 15,
-                                      color: Colors.greenAccent),
-                                ),
-                                Text(
-                                  '${controller[index]['episode'].length}',
-                                  style: TextStyle(
-                                      decoration: TextDecoration.none,
-                                      fontSize: 15,
-                                      color: Colors.white),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        builder: (context, value, child) {
-                          return Transform.translate(
-                              offset: Offset(200 * value!, 0), child: child!);
-                        }),
-                  )),
-                ],
-              ),
+                      duration: const Duration(seconds: 5),
+                      curve: Curves.decelerate,
+                      tween: Tween(begin: 1, end: 0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '${controller[index]['name']}',
+                            style: TextStyle(
+                                decoration: TextDecoration.none,
+                                fontSize: 22,
+                                color: Colors.white),
+                          ),
+                          SizedBox(height: 15),
+                          _textCard(index, 'status', 'status'),
+                          SizedBox(height: 5),
+                          _textCard(index, 'espécies', 'species'),
+                          SizedBox(height: 5),
+                          _textCard(index, 'genero', 'gender'),
+                          SizedBox(height: 5),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'EPISÓDIOS',
+                                style: TextStyle(
+                                    decoration: TextDecoration.none,
+                                    fontSize: 15,
+                                    color: Colors.greenAccent),
+                              ),
+                              Text(
+                                '${controller[index]['episode'].length}',
+                                style: TextStyle(
+                                    decoration: TextDecoration.none,
+                                    fontSize: 15,
+                                    color: Colors.white),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      builder: (context, value, child) {
+                        return Transform.translate(
+                            offset: Offset(200 * value!, 0), child: child!);
+                      },
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
-        builder: (context, value, child) {
-          return Transform.translate(
-            offset: Offset(0.0, 300 * value!),
-            child: child!,
-          );
-        });
+      ),
+      builder: (context, value, child) {
+        return Transform.translate(
+          offset: Offset(0.0, 300 * value!),
+          child: child!,
+        );
+      },
+    );
   }
 
   _textCard(int index, String name, String key) {

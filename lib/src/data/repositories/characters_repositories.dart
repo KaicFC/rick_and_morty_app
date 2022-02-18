@@ -10,12 +10,13 @@ class CharactersRepositories implements ICharactersRepositories {
   @override
   Future<HeaderModel?> getCharacters() async {
     try {
-      var response = await _customDio.instance.get(_customDio.getCharacter().toString());
+      var response =
+          await _customDio.instance.get(_customDio.getCharacter().toString());
       var res = await response.data;
       return HeaderModel.fromJson(res);
     } catch (err) {
       debugPrint((err as Exception).toString());
+      return null;
     }
-    return null;
   }
 }

@@ -16,7 +16,7 @@ class CharacterIdRepository implements ICharactersIdRepositories {
       return CharactersModel.fromJson(res);
     } catch (err) {
       debugPrint((err as Exception).toString());
+      return null;
     }
-    return null;
   }
 }
