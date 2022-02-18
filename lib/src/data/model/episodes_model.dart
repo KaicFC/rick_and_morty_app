@@ -1,7 +1,7 @@
 class EpisodesModel {
   final int? id;
   final String? name;
-  final String? air_date;
+  final String? airDate;
   final String? episode;
   final List? characters;
   final String? url;
@@ -10,7 +10,7 @@ class EpisodesModel {
   EpisodesModel({
     required this.id,
     required this.name,
-    required this.air_date,
+    required this.airDate,
     required this.episode,
     required this.characters,
     required this.url,
@@ -21,7 +21,7 @@ class EpisodesModel {
     return EpisodesModel(
       id: json['id'],
       name: json['name'],
-      air_date: json['air_date'],
+      airDate: json['airDate'],
       episode: json['episode'],
       characters: json['characters'],
       url: json['url'],

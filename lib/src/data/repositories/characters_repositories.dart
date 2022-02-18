@@ -4,13 +4,13 @@ import 'package:rick_and_morty_app/src/domain/repositories/characters_repositori
 import 'package:rick_and_morty_app/src/shared/http/custom_dio.dart';
 
 class CharactersRepositories implements ICharactersRepositories {
+  final CustomDio _customDio;
+  CharactersRepositories(this._customDio);
 
   @override
   Future<HeaderModel?> getCharacters() async {
     try {
-      var uri = Uri.parse("${CustomDio.getInstance().dio.options.baseUrl}"
-          "${CustomDio.endpointCharacters}");
-      var response = await CustomDio.getInstance().dio.get(uri.toString());
+      var response = await _customDio.instance.get(_customDio.getCharacter().toString());
       var res = await response.data;
       return HeaderModel.fromJson(res);
     } catch (err) {

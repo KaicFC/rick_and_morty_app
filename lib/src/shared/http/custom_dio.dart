@@ -1,22 +1,44 @@
+// ignore_for_file: unnecessary_this
+
 import 'package:dio/dio.dart';
 import 'package:flutter/rendering.dart';
 
 class CustomDio {
-  late Dio dio;
-  Dio get instance => dio;
+  late Dio _dio;
+  Dio get instance => _dio;
 
   CustomDio.getInstance() {
-    this.dio = Dio();
-    dio.options.baseUrl = "https://rickandmortyapi.com/api/";
-
-    dio.interceptors.add(interpceptorResponse());
-    dio.interceptors.add(interpceptorRequest());
-    dio.interceptors.add(interpceptorOnError());
+    _dio = Dio(_getOptions());
+    _dio.interceptors.add(interpceptorResponse());
+    _dio.interceptors.add(interpceptorRequest());
+    _dio.interceptors.add(interpceptorOnError());
   }
 
-  static const String endpointCharacters = 'character/';
-  static const String endpointLocations = 'location/';
-  static const String endpointEpisodes = 'episode/';
+  BaseOptions _getOptions() => BaseOptions(
+        baseUrl: "https://rickandmortyapi.com/api/",
+        connectTimeout: 10000,
+        receiveTimeout: 10000,
+      );
+
+  getCharacter() {
+    var uri = Uri.parse("${_getOptions().baseUrl}/character/");
+    return uri;
+  }
+
+  getCharacterId(int id) {
+    var uri = Uri.parse("${_getOptions().baseUrl}/character/$id");
+    return uri;
+  }
+
+  getLocation() {
+    var uri = Uri.parse("${_getOptions().baseUrl}/location/");
+    return uri;
+  }
+
+  getEpisode() {
+    var uri = Uri.parse("${_getOptions().baseUrl}/episode/");
+    return uri;
+  }
 }
 
 InterceptorsWrapper interpceptorRequest() {

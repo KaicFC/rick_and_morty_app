@@ -1,18 +1,18 @@
 # Rick and Morty APP
 
 
-### Descrição
+## Descrição
 
 - Desenvolver um aplicativo de listagem de personagens de Rick and Morty.
 
-### Demonstração
+## Demonstração
 
 <img src="/screenshots/rick_morty.gif" heigth="400" width="300">
 <img src="/screenshots/home.png" heigth="400" width="300">
 <img src="/screenshots/details.png" heigth="400" width="300">
 <img src="/screenshots/loading.png" heigth="400" width="300">
 
-### 📋 Pré-requisitos
+## 📋 Pré-requisitos
 
 O que você precisa para instalar o software e como rodá-lo?
 
@@ -32,7 +32,7 @@ Caso não possua o Flutter instalado ou queira atualizar para a versão estável
 - Recomendo rodar o aplicativo no emulador **Android** para ter uma experiência ainda melhor.
 
 
-### 🔧 Executando o Projeto
+## 🔧 Executando o Projeto
 
 ```
 Abra o terminal e clone o repositório:
@@ -55,7 +55,6 @@ Divirta-se!
 ```
 Dentro da pasta:
 $ cd rick_and_morty_app
-
 
 Execute o comando:
 $ flutter clean
